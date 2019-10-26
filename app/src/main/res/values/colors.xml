@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <!-- Common colors -->
+    <color name="black">#000000</color>
+    <color name="granite">#4D4E53</color>
+    <color name="slate">#919296</color>
+    <color name="fog">#D8D8D5</color>
+    <color name="light_grey">#F1F0EF</color>
+    <color name="white">#FFFFFF</color>
+    <color name="green">#47962D</color>
+    <color name="grass">#78B833</color>
+    <color name="leaf">#C8E691</color>
+    <color name="ocean">#16A6C9</color>
+    <color name="sky">#BADCE6</color>
+    <color name="heater">#763369</color>
+    <color name="red">#C4001A</color>
+    <color name="raspberry">#D84451</color>
+    <color name="cloudberry">#DD7611</color>
+    <color name="mud">#704E36</color>
+    <color name="midnight_sun">#FCCC82</color>
+    <color name="sand">#DCCCA7</color>
+    <color name="transparent">#00FFFFFF</color>
+</resources>
