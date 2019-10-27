@@ -14,6 +14,10 @@ import com.kilani.nowornever.R
  */
 class CurrentChallengesFragment : Fragment() {
 
+    companion object {
+        fun newInstance() = CurrentChallengesFragment()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
