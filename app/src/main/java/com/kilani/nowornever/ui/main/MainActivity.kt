@@ -1,11 +1,10 @@
  package com.kilani.nowornever.ui.main
 
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.kilani.nowornever.R
-import com.kilani.nowornever.ui.home.ReceivedChallengesFragment
+import com.kilani.nowornever.ui.homechallenges.HomeChallengesFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
  class MainActivity : AppCompatActivity() {
@@ -24,7 +23,7 @@ import kotlinx.android.synthetic.main.activity_main.*
                      return@setOnNavigationItemSelectedListener true
                  }
                  R.id.profile -> {
-                     replaceContentFragment(ReceivedChallengesFragment.newInstance())
+                     replaceContentFragment(HomeChallengesFragment.newInstance())
                      return@setOnNavigationItemSelectedListener true
                  }
                  else -> {
