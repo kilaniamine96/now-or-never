@@ -3,27 +3,35 @@
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.google.firebase.auth.FirebaseAuth
 import com.kilani.nowornever.R
 import com.kilani.nowornever.ui.homechallenges.HomeChallengesFragment
+import com.kilani.nowornever.ui.profile.ProfileFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
  class MainActivity : AppCompatActivity() {
+
+     private val viewModel by viewModel<MainViewModel>()
 
      override fun onCreate(savedInstanceState: Bundle?) {
          super.onCreate(savedInstanceState)
          setContentView(R.layout.activity_main)
+         replaceContentFragment(HomeChallengesFragment.newInstance())
          initListeners()
+         viewModel.getUser(FirebaseAuth.getInstance().currentUser!!)
      }
+
 
      private fun initListeners() {
          bottomNavigationView.setOnNavigationItemSelectedListener { item ->
              when (item.itemId) {
                  R.id.home -> {
-
+                     replaceContentFragment(HomeChallengesFragment.newInstance())
                      return@setOnNavigationItemSelectedListener true
                  }
                  R.id.profile -> {
-                     replaceContentFragment(HomeChallengesFragment.newInstance())
+                     replaceContentFragment(ProfileFragment.newInstance())
                      return@setOnNavigationItemSelectedListener true
                  }
                  else -> {

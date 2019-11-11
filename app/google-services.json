@@ -8,12 +8,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:989397981230:android:de52ff5c4a3b557ac0e7bf",
+        "mobilesdk_app_id": "1:989397981230:android:f86fd4ffa9e763c1c0e7bf",
         "android_client_info": {
           "package_name": "com.kilani.nowornever"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "989397981230-94mpnccb2tjdicsc4nino3m0dm6k978n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kilani.nowornever",
+            "certificate_hash": "91e3d4e52a1a356b8b967b2088d2674dd3b86d7a"
+          }
+        },
         {
           "client_id": "989397981230-5bf67k9hq5lit51t2rbstfbe8ad9erlv.apps.googleusercontent.com",
           "client_type": 3
