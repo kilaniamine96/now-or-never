@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.kilani.nowornever.R
+import com.kilani.nowornever.ui.homechallenges.current.send.SendChallengeDialogFragment
 import kotlinx.android.synthetic.main.fragment_home_challenges.*
 
 /**
@@ -29,6 +30,10 @@ class HomeChallengesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        newChallengeFab.setOnClickListener {
+            val dialog = SendChallengeDialogFragment.newInstance()
+            dialog.show(childFragmentManager, "HELLO")
+        }
         homeChallengesViewPager.adapter = HomeChallengesPagerAdapter(childFragmentManager)
     }
 

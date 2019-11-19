@@ -11,5 +11,5 @@ fun FirebaseUser.toModel(score: Int, challenges: List<Challenge>) = User(
     name = displayName,
     imageUrl = photoUrl.toString(),
     score = score,
-    challenges = challenges
+    challenges = challenges as MutableList<Challenge>
 )

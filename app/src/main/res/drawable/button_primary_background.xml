@@ -8,7 +8,7 @@
         >
         <shape>
             <padding android:bottom="5dp"/>
-            <solid android:color="@color/button_primary_background_color_selector"/>
+            <solid android:color="@color/button_primary_color_selector"/>
             <corners
                 android:radius="25dp"/>
             <padding

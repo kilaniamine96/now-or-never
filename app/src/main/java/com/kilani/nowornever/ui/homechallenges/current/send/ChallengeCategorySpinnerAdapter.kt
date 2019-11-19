@@ -1,4 +1,4 @@
-package com.kilani.nowornever.ui.homechallenges.current
+package com.kilani.nowornever.ui.homechallenges.current.send
 
 import android.content.Context
 import android.widget.ArrayAdapter

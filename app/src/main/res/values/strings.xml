@@ -2,7 +2,19 @@
     <string name="app_name">NowOrNever</string>
     <string name="home">Accueil</string>
     <string name="profile">Profil</string>
+    <string name="love">Amour</string>
+    <string name="hot">Caliente</string>
+    <string name="funny">Rigolo</string>
+    <string name="random">Divers</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="category">Catégorie</string>
+    <string name="add_challenge_title">Envoyer/Ajouter un challenge</string>
+    <string name="receiver_name_hint">Prénom Nom du receveur</string>
+    <string name="points_number_hint">Nombre de points</string>
+    <string name="description_hint">Description</string>
+    <string name="cancel">Annuler</string>
+    <string name="send">Envoyer</string>
 </resources>

@@ -9,5 +9,5 @@ import android.view.View
 
 abstract class BaseViewHolder<T: Any>(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    abstract fun bind(item: T)
+    abstract fun bind(item: T, itemPosition : Int)
 }

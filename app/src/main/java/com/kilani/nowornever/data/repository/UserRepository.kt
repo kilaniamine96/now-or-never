@@ -1,9 +1,10 @@
-package com.kilani.nowornever.data
+package com.kilani.nowornever.data.repository
 
 import android.util.Log
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 import com.kilani.nowornever.data.model.User
+import com.kilani.nowornever.data.toModel
 
 class UserRepository {
     private val dbCollection = FirebaseFirestore.getInstance().collection("users")
@@ -16,10 +17,10 @@ class UserRepository {
     }
 
     fun getUser(user: FirebaseUser, onSuccess: (user: User) -> Unit) {
-        dbCollection.document(user.uid)
+        dbCollection.document(user.displayName!!)
             .get()
             .addOnSuccessListener { document ->
-                if (document.data != null) {
+                if (document.exists()) {
                     onSuccess(document.toObject(User::class.java)!!)
                 } else {
                     val newUser = user.toModel(0, listOf())

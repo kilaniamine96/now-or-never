@@ -16,7 +16,7 @@ abstract class BaseAdapter<T : Any>(objectList: List<T>) : RecyclerView.Adapter<
 
     override fun onBindViewHolder(holder: BaseViewHolder<T>, position: Int) {
         val objectItem = mObjectList!![position]
-        holder.bind(objectItem)
+        holder.bind(objectItem, position)
     }
 
     fun setObjectList(objectList: List<T>) {

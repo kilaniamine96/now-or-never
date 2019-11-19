@@ -3,7 +3,7 @@ package com.kilani.nowornever.ui.main
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseUser
-import com.kilani.nowornever.data.UserRepository
+import com.kilani.nowornever.data.repository.UserRepository
 import com.kilani.nowornever.data.model.Challenge
 import com.kilani.nowornever.utils.Coroutines
 

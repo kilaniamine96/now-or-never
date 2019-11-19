@@ -4,11 +4,10 @@ import com.kilani.nowornever.data.enums.ChallengeCategory
 import com.kilani.nowornever.data.enums.ChallengeStatus
 
 data class Challenge (
-    var id: Long? = 0,
     var points: Int? = 0,
     var category: ChallengeCategory? = ChallengeCategory.RANDOM,
     var description: String? = "",
     var sender: String? = "",
     var receiver: String? = "",
-    var status: ChallengeStatus? = ChallengeStatus.TO_SEND
+    var status: ChallengeStatus? = ChallengeStatus.PROPOSED
 )
