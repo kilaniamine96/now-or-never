@@ -9,7 +9,7 @@ class UserRepository {
     private val dbCollection = FirebaseFirestore.getInstance().collection("users")
 
     private fun addUserToFirebase(user: User, onSuccess: () -> Unit, onFailure: (e: Exception) -> Unit) {
-        dbCollection.document(user.id)
+        dbCollection.document(user.name!!)
             .set(user)
             .addOnSuccessListener { onSuccess()}
             .addOnFailureListener { exception -> onFailure(exception) }
