@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.kilani.nowornever.R
+import com.kilani.nowornever.data.enums.ChallengeStatus
 import com.kilani.nowornever.data.model.Challenge
 import com.kilani.nowornever.ui.homechallenges.HomeChallengesViewModel
 import kotlinx.android.synthetic.main.fragment_current_challenges.*
@@ -36,35 +37,42 @@ class CurrentChallengesFragment : Fragment(), CurrentChallengesAdapter.CurrentCh
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getChallenges(FirebaseAuth.getInstance().currentUser!!)
         initObservers()
         initOrUpdateRecyclerView()
     }
 
     private fun initOrUpdateRecyclerView() {
-        viewModel.challengesAccepted.value?.let {
+        viewModel.challengesList.value?.let {
             currentChallengesRv.apply {
                 layoutManager = LinearLayoutManager(context)
-                adapter = CurrentChallengesAdapter(it, this@CurrentChallengesFragment)
+                adapter = CurrentChallengesAdapter(it.filter { it.status == ChallengeStatus.PROPOSED }, this@CurrentChallengesFragment)
             }
         }
     }
 
     private fun initObservers() {
-        viewModel.challengesAccepted.observe(
+        viewModel.challengesList.observe(
             this,
             Observer { challengesReceived -> if (challengesReceived != null) initOrUpdateRecyclerView()  }
         )
     }
 
+    private fun updateChallenges() = viewModel.updateChallenges(FirebaseAuth.getInstance().currentUser?.displayName!!)
+
+
     override fun onDeleteChallenge(itemPosition: Int) {
-        val challengeNewList = viewModel.challengesAccepted.value
+        val challengeNewList = viewModel.challengesList.value
         challengeNewList?.removeAt(itemPosition)
-        viewModel.challengesAccepted.postValue(challengeNewList)
+        viewModel.challengesList.postValue(challengeNewList)
+        updateChallenges()
     }
 
-    override fun onValidateChallenge(challenge: Challenge) {
-        //(activity as MainActivity).viewModel.
+    override fun onValidateChallenge(itemPosition: Int, challenge: Challenge) {
+        val challengeNewList = viewModel.challengesList.value
+        challenge.status = ChallengeStatus.DONE
+        challengeNewList?.set(itemPosition, challenge)
+        viewModel.challengesList.postValue(challengeNewList)
+        updateChallenges()
     }
 
 

@@ -11,7 +11,7 @@ class CurrentChallengesAdapter(list: List<Challenge>, private val listener: Curr
 
     interface CurrentChallengesListener {
         fun onDeleteChallenge(itemPosition: Int)
-        fun onValidateChallenge(challenge: Challenge)
+        fun onValidateChallenge(itemPosition: Int, challenge: Challenge)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<Challenge> =

@@ -14,6 +14,6 @@ class CurrentChallengesViewHolder(
         view.pointsTv.text = item.points.toString()
         view.descriptionTv.text = item.description
         view.deleteBtn.setOnClickListener{ listener.onDeleteChallenge(itemPosition)}
-        view.validateBtn.setOnClickListener { listener.onValidateChallenge(item) }
+        view.validateBtn.setOnClickListener { listener.onValidateChallenge(itemPosition,item) }
     }
 }
