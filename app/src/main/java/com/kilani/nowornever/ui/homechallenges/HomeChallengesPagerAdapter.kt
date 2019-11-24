@@ -24,6 +24,15 @@ class HomeChallengesPagerAdapter(mgr: FragmentManager) : FragmentStatePagerAdapt
         return fragmentsMap[position]!!
     }
 
+    override fun getPageTitle(position: Int): CharSequence? {
+        return when (position) {
+            0 -> "Défis en cours"
+            1 -> "Défis reçus"
+            2-> "Défis finis"
+            else -> "Défis en cours"
+        }
+    }
+
     fun getFragment(position: Int): Fragment = fragmentsMap[position]!!
 
 }

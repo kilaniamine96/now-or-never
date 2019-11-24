@@ -40,6 +40,7 @@ class HomeChallengesFragment : Fragment() {
             dialog.show(childFragmentManager, "HELLO")
         }
         homeChallengesViewPager.adapter = HomeChallengesPagerAdapter(childFragmentManager)
+        challengesTl.setupWithViewPager(homeChallengesViewPager)
     }
 
 }
