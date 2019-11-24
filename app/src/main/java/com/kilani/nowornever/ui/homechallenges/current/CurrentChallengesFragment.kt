@@ -45,7 +45,7 @@ class CurrentChallengesFragment : Fragment(), CurrentChallengesAdapter.CurrentCh
         viewModel.challengesList.value?.let {
             currentChallengesRv.apply {
                 layoutManager = LinearLayoutManager(context)
-                adapter = CurrentChallengesAdapter(it.filter { it.status == ChallengeStatus.PROPOSED }, this@CurrentChallengesFragment)
+                adapter = CurrentChallengesAdapter(it.filter { it.status == ChallengeStatus.ACCEPTED }, this@CurrentChallengesFragment)
             }
         }
     }
