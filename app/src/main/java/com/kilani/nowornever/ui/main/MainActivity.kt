@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.kilani.nowornever.R
+import com.kilani.nowornever.ui.homechallenges.ConfirmationDialogFragment
 import com.kilani.nowornever.ui.homechallenges.HomeChallengesFragment
 import com.kilani.nowornever.ui.profile.ProfileFragment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -47,6 +48,20 @@ import org.koin.android.viewmodel.ext.android.viewModel
              supportFragmentManager.beginTransaction()
                  .replace(R.id.fragmentContainer, fragment)
                  .commit()
+         }
+     }
+
+     fun showConfirmationDialog(onConfirm: () -> Unit) {
+         val dialog = ConfirmationDialogFragment.newInstance()
+         dialog.show(supportFragmentManager,"ConfirmationDialog")
+         dialog.listener = object : ConfirmationDialogFragment.ConfirmationDialogListener {
+             override fun onCancel() {
+                 dialog.dismiss()
+             }
+             override fun onConfirm() {
+                 onConfirm()
+                 dialog.dismiss()
+             }
          }
      }
  }

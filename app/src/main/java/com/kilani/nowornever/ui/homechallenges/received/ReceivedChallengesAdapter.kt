@@ -17,7 +17,7 @@ class ReceivedChallengesAdapter(list: List<Challenge>, private val listener: Rec
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<Challenge> =
         ReceivedChallengesViewHolder(
             LayoutInflater.from(parent.context).inflate(
-                R.layout.layout_challenges_recyclerview_item, parent, false
+                R.layout.layout_received_challenges_recyclerview_item, parent, false
             ),
             listener
         )

@@ -17,7 +17,7 @@ class CurrentChallengesAdapter(list: List<Challenge>, private val listener: Curr
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<Challenge> =
         CurrentChallengesViewHolder(
             LayoutInflater.from(parent.context).inflate(
-                R.layout.layout_challenges_recyclerview_item, parent, false
+                R.layout.layout_current_challenges_recyclerview_item, parent, false
             ),
             listener
         )

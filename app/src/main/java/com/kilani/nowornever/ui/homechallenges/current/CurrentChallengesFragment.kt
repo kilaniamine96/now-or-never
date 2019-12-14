@@ -13,6 +13,7 @@ import com.kilani.nowornever.R
 import com.kilani.nowornever.data.enums.ChallengeStatus
 import com.kilani.nowornever.data.model.Challenge
 import com.kilani.nowornever.ui.homechallenges.HomeChallengesViewModel
+import com.kilani.nowornever.ui.main.MainActivity
 import kotlinx.android.synthetic.main.fragment_current_challenges.*
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
@@ -68,11 +69,13 @@ class CurrentChallengesFragment : Fragment(), CurrentChallengesAdapter.CurrentCh
     }
 
     override fun onValidateChallenge(itemPosition: Int, challenge: Challenge) {
-        val challengeNewList = viewModel.challengesList.value
-        challenge.status = ChallengeStatus.DONE
-        challengeNewList?.set(itemPosition, challenge)
-        viewModel.challengesList.postValue(challengeNewList)
-        updateChallenges()
+        (activity as MainActivity).showConfirmationDialog {
+            val challengeNewList = viewModel.challengesList.value
+            challenge.status = ChallengeStatus.DONE
+            challengeNewList?.set(itemPosition, challenge)
+            viewModel.challengesList.postValue(challengeNewList)
+            updateChallenges()
+        }
     }
 
 

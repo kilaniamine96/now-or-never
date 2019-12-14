@@ -17,4 +17,5 @@
     <string name="description_hint">Description</string>
     <string name="cancel">Annuler</string>
     <string name="send">Envoyer</string>
+    <string name="confirm_choice">Voulez-vous confirmer ce choix?</string>
 </resources>

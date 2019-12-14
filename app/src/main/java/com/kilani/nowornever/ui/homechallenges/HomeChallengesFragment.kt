@@ -37,7 +37,7 @@ class HomeChallengesFragment : Fragment() {
         viewModel.getChallenges(FirebaseAuth.getInstance().currentUser!!)
         newChallengeFab.setOnClickListener {
             val dialog = SendChallengeDialogFragment.newInstance()
-            dialog.show(childFragmentManager, "HELLO")
+            dialog.show(childFragmentManager, "SendChallengeDialog")
         }
         homeChallengesViewPager.adapter = HomeChallengesPagerAdapter(childFragmentManager)
         challengesTl.setupWithViewPager(homeChallengesViewPager)

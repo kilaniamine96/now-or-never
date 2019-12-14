@@ -13,7 +13,7 @@
     <View
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
-        android:background="@color/green"
+        android:background="@color/goldish_yellow"
         android:layout_height="5dp"/>
     <TextView
         android:id="@+id/senderTv"
