@@ -23,7 +23,7 @@ class UserRepository {
                 if (document.exists()) {
                     onSuccess(document.toObject(User::class.java)!!)
                 } else {
-                    val newUser = user.toModel(0, listOf())
+                    val newUser = user.toModel(0, mutableListOf())
                     addUserToFirebase(newUser,
                         onSuccess = { Log.d("UserRepository", "User added to database")},
                         onFailure = { e -> Log.e("UserRepositoryError", "Error adding user" ,e)})
@@ -39,6 +39,15 @@ class UserRepository {
             .addSnapshotListener { snapshot, e ->
                 if (e != null) Log.w("UserRepository", "Error listening for updates: ", e)
                 if (snapshot!!.exists()) onSuccess(snapshot.toObject(User::class.java)!!)
+            }
+    }
+
+    fun updateUserScore(newScore: Int, user: FirebaseUser, onSuccess: () -> Unit) {
+        dbCollection.document(user.displayName!!)
+            .update("score", newScore)
+            .addOnSuccessListener { onSuccess() }
+            .addOnFailureListener{ e ->
+                Log.w("UserRepository", "Could not update User score", e)
             }
     }
 }

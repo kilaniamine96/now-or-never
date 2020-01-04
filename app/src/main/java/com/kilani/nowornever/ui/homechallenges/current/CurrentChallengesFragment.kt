@@ -71,6 +71,7 @@ class CurrentChallengesFragment : Fragment(), CurrentChallengesAdapter.CurrentCh
     override fun onValidateChallenge(itemPosition: Int, challenge: Challenge) {
         (activity as MainActivity).showConfirmationDialog {
             challenge.status = ChallengeStatus.DONE
+            viewModel.updateUserScore(FirebaseAuth.getInstance().currentUser!!, challenge.points!!)
             updateChallenges()
         }
     }

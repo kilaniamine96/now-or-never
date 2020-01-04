@@ -39,4 +39,12 @@ class MainViewModel(private val userRepository: UserRepository, private val chal
             })
         }
     }
+
+    fun updateUserScore(user: FirebaseUser, score: Int) {
+        Coroutines.io {
+            val updatedUser = currentUser.value as User
+            updatedUser.score = updatedUser.score?.plus(score)
+            userRepository.updateUserScore(updatedUser.score!!, user, onSuccess = { currentUser.postValue(updatedUser)}  )
+        }
+    }
 }

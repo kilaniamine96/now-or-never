@@ -6,10 +6,10 @@ import com.kilani.nowornever.data.model.User
 
 //User
 
-fun FirebaseUser.toModel(score: Int, challenges: List<Challenge>) = User(
+fun FirebaseUser.toModel(score: Int, challenges: MutableList<Challenge>) = User(
     id = uid,
     name = displayName,
     imageUrl = photoUrl.toString(),
     score = score,
-    challenges = challenges as MutableList<Challenge>
+    challenges = challenges
 )
