@@ -2,7 +2,6 @@ package com.kilani.nowornever.di
 
 import com.kilani.nowornever.data.repository.ChallengeRepository
 import com.kilani.nowornever.data.repository.UserRepository
-import com.kilani.nowornever.ui.homechallenges.HomeChallengesViewModel
 import com.kilani.nowornever.ui.homechallenges.current.send.SendChallengeViewModel
 import com.kilani.nowornever.ui.main.MainViewModel
 import org.koin.android.viewmodel.ext.koin.viewModel
@@ -17,7 +16,6 @@ val noworneverKoinModule = module("com.kilani.nowornever", createOnStart = true,
     single { ChallengeRepository() }
 
     //ViewModels
-    viewModel { MainViewModel(get()) }
+    viewModel { MainViewModel(get(), get()) }
     viewModel { SendChallengeViewModel(get()) }
-    viewModel { HomeChallengesViewModel(get(), get()) }
 }

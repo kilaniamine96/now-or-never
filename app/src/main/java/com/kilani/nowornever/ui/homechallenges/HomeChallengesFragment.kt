@@ -10,6 +10,7 @@ import com.google.firebase.auth.FirebaseAuth
 
 import com.kilani.nowornever.R
 import com.kilani.nowornever.ui.homechallenges.current.send.SendChallengeDialogFragment
+import com.kilani.nowornever.ui.main.MainViewModel
 import kotlinx.android.synthetic.main.fragment_home_challenges.*
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
@@ -18,7 +19,7 @@ import org.koin.android.viewmodel.ext.android.sharedViewModel
  */
 class HomeChallengesFragment : Fragment() {
 
-    private val viewModel by sharedViewModel<HomeChallengesViewModel>()
+    private val viewModel by sharedViewModel<MainViewModel>()
 
     companion object {
         fun newInstance() = HomeChallengesFragment()
@@ -34,7 +35,6 @@ class HomeChallengesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getChallenges(FirebaseAuth.getInstance().currentUser!!)
         newChallengeFab.setOnClickListener {
             val dialog = SendChallengeDialogFragment.newInstance()
             dialog.show(childFragmentManager, "SendChallengeDialog")

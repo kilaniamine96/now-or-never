@@ -11,8 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.kilani.nowornever.R
 import com.kilani.nowornever.data.enums.ChallengeStatus
-import com.kilani.nowornever.ui.homechallenges.HomeChallengesViewModel
-import com.kilani.nowornever.ui.homechallenges.current.CurrentChallengesAdapter
+import com.kilani.nowornever.ui.main.MainViewModel
 import kotlinx.android.synthetic.main.fragment_done_challenges.*
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
@@ -22,7 +21,7 @@ import org.koin.android.viewmodel.ext.android.sharedViewModel
 class DoneChallengesFragment : Fragment(), DoneChallengesAdapter.DoneChallengesListener {
 
 
-    private val viewModel by sharedViewModel<HomeChallengesViewModel>()
+    private val viewModel by sharedViewModel<MainViewModel>()
 
     companion object {
         fun newInstance() = DoneChallengesFragment()
