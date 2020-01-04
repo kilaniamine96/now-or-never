@@ -15,13 +15,15 @@ import org.koin.android.viewmodel.ext.android.viewModel
  class MainActivity : AppCompatActivity() {
 
      val viewModel by viewModel<MainViewModel>()
+     private val currentUser = FirebaseAuth.getInstance().currentUser!!
 
      override fun onCreate(savedInstanceState: Bundle?) {
          super.onCreate(savedInstanceState)
          setContentView(R.layout.activity_main)
          replaceContentFragment(HomeChallengesFragment.newInstance())
          initListeners()
-         viewModel.getUser(FirebaseAuth.getInstance().currentUser!!)
+         viewModel.getUser(currentUser)
+         viewModel.listenForUserUpdates(currentUser)
      }
 
 

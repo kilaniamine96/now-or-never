@@ -33,4 +33,12 @@ class UserRepository {
             .addOnFailureListener { exception ->
                 Log.w("UserRepository", "Error getting user: ", exception) }
     }
+
+    fun listenForUserUpdates(user: FirebaseUser, onSuccess: (userUpdated: User) -> Unit) {
+        dbCollection.document(user.displayName!!)
+            .addSnapshotListener { snapshot, e ->
+                if (e != null) Log.w("UserRepository", "Error listening for updates: ", e)
+                if (snapshot!!.exists()) onSuccess(snapshot.toObject(User::class.java)!!)
+            }
+    }
 }

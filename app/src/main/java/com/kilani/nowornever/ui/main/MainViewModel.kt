@@ -29,4 +29,14 @@ class MainViewModel(private val userRepository: UserRepository, private val chal
             challengeRepository.updateChallenge(username,challengesList.value!!)
         }
     }
+
+    fun listenForUserUpdates(user: FirebaseUser) {
+        Coroutines.io {
+            userRepository.listenForUserUpdates(user, onSuccess = {
+                userUpdated ->
+                challengesList.postValue(userUpdated.challenges)
+                currentUser.postValue(userUpdated)
+            })
+        }
+    }
 }
