@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dark_brown">
+    android:background="@color/fog">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/challengesTl"
@@ -12,9 +12,9 @@
         android:background="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tabIndicatorColor="@color/white"
-        app:tabSelectedTextColor="@color/white"
-        app:tabTextColor="@color/raspberry" />
+        app:tabIndicatorColor="@color/raspberry"
+        app:tabSelectedTextColor="@color/raspberry"
+        app:tabTextColor="@color/white" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/homeChallengesViewPager"
@@ -27,6 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
+        android:elevation="5dp"
         android:layout_marginBottom="20dp"
         android:backgroundTint="@color/raspberry"
         android:src="@drawable/ic_add"
