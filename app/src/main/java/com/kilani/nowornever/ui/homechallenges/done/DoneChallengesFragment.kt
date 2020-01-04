@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.kilani.nowornever.R
 import com.kilani.nowornever.data.enums.ChallengeStatus
+import com.kilani.nowornever.ui.main.MainActivity
 import com.kilani.nowornever.ui.main.MainViewModel
 import kotlinx.android.synthetic.main.fragment_done_challenges.*
 import org.koin.android.viewmodel.ext.android.sharedViewModel
@@ -60,10 +61,10 @@ class DoneChallengesFragment : Fragment(), DoneChallengesAdapter.DoneChallengesL
     private fun updateChallenges() = viewModel.updateChallenges(FirebaseAuth.getInstance().currentUser?.displayName!!)
 
     override fun onDeleteChallenge(itemPosition: Int) {
-        val challengeNewList = viewModel.challengesList.value
-        challengeNewList?.removeAt(itemPosition)
-        viewModel.challengesList.postValue(challengeNewList)
-        updateChallenges()
+        (activity as MainActivity).showConfirmationDialog {
+            viewModel.challengesList.value?.removeAt(itemPosition)
+            updateChallenges()
+        }
     }
 
 }

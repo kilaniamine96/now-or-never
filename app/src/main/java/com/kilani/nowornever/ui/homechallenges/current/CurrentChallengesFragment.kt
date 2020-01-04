@@ -62,18 +62,15 @@ class CurrentChallengesFragment : Fragment(), CurrentChallengesAdapter.CurrentCh
 
 
     override fun onDeleteChallenge(itemPosition: Int) {
-        val challengeNewList = viewModel.challengesList.value
-        challengeNewList?.removeAt(itemPosition)
-        viewModel.challengesList.postValue(challengeNewList)
-        updateChallenges()
+        (activity as MainActivity).showConfirmationDialog {
+            viewModel.challengesList.value?.removeAt(itemPosition)
+            updateChallenges()
+        }
     }
 
     override fun onValidateChallenge(itemPosition: Int, challenge: Challenge) {
         (activity as MainActivity).showConfirmationDialog {
-            val challengeNewList = viewModel.challengesList.value
             challenge.status = ChallengeStatus.DONE
-            challengeNewList?.set(itemPosition, challenge)
-            viewModel.challengesList.postValue(challengeNewList)
             updateChallenges()
         }
     }

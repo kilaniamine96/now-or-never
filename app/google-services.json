@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "989397981230-qgeu2kb8qipk48nugnm53k151088qn7r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kilani.nowornever",
+            "certificate_hash": "07aa3ab02e99b612db067318e9e8b0f503b33c97"
+          }
+        },
+        {
+          "client_id": "989397981230-ei3rfr04h3c1cvtjei3v1oh7sr0rnv62.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kilani.nowornever",
+            "certificate_hash": "8ea3a9895bd6aabd26075acd04c10118b2b10b97"
+          }
+        },
+        {
           "client_id": "989397981230-94mpnccb2tjdicsc4nino3m0dm6k978n.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

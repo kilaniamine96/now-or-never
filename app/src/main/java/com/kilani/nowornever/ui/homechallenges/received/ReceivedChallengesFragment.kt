@@ -13,6 +13,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.kilani.nowornever.R
 import com.kilani.nowornever.data.enums.ChallengeStatus
 import com.kilani.nowornever.data.model.Challenge
+import com.kilani.nowornever.ui.main.MainActivity
 import com.kilani.nowornever.ui.main.MainViewModel
 import kotlinx.android.synthetic.main.fragment_received_challenges.*
 import org.koin.android.viewmodel.ext.android.sharedViewModel
@@ -62,18 +63,17 @@ class ReceivedChallengesFragment : Fragment(), ReceivedChallengesAdapter.Receive
     private fun updateChallenges() = viewModel.updateChallenges(FirebaseAuth.getInstance().currentUser?.displayName!!)
 
     override fun onDeleteChallenge(itemPosition: Int) {
-        val challengeNewList = viewModel.challengesList.value
-        challengeNewList?.removeAt(itemPosition)
-        viewModel.challengesList.postValue(challengeNewList)
+        (activity as MainActivity).showConfirmationDialog {
+        viewModel.challengesList.value?.removeAt(itemPosition)
         updateChallenges()
+        }
     }
 
     override fun onAcceptChallenge(itemPosition: Int, challenge: Challenge) {
-        val challengeNewList = viewModel.challengesList.value
+        (activity as MainActivity).showConfirmationDialog {
         challenge.status = ChallengeStatus.ACCEPTED
-        challengeNewList?.set(itemPosition, challenge)
-        viewModel.challengesList.postValue(challengeNewList)
         updateChallenges()
+        }
     }
 
 
