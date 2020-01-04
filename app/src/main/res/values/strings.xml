@@ -18,4 +18,6 @@
     <string name="cancel">Annuler</string>
     <string name="send">Envoyer</string>
     <string name="confirm_choice">Voulez-vous confirmer ce choix?</string>
+    <string name="no">NON</string>
+    <string name="yes">OUI</string>
 </resources>
