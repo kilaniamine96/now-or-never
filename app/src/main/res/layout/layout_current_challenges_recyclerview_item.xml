@@ -7,20 +7,16 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="10dp"
     android:layout_marginBottom="10dp"
-    android:background="@drawable/rounded_white_background"
+    android:background="@drawable/rounded_white_background_current"
     android:orientation="horizontal">
 
-    <View
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_width="match_parent"
-        android:background="@color/goldish_yellow"
-        android:layout_height="5dp"/>
     <TextView
         android:id="@+id/senderTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
+        android:fontFamily="@font/archivo_black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Farid Kilani" />

@@ -19,8 +19,6 @@ import org.koin.android.viewmodel.ext.android.sharedViewModel
  */
 class HomeChallengesFragment : Fragment() {
 
-    private val viewModel by sharedViewModel<MainViewModel>()
-
     companion object {
         fun newInstance() = HomeChallengesFragment()
     }

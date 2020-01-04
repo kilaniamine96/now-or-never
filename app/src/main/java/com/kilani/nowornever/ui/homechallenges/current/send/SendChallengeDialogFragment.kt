@@ -47,7 +47,9 @@ class SendChallengeDialogFragment : DialogFragment() {
     private fun initObservers() {
         viewModel.challengeSent.observe(
             this,
-            Observer { challengeSent -> if (challengeSent) dismiss() }
+            Observer { challengeSent -> if (challengeSent) {
+                sendChallengePb.visibility = View.GONE
+                dismiss() } }
         )
     }
 
@@ -55,6 +57,7 @@ class SendChallengeDialogFragment : DialogFragment() {
         cancelBtn.setOnClickListener { dismiss() }
         sendBtn.setOnClickListener {
             fillChallenge()
+            sendChallengePb.visibility = View.VISIBLE
             viewModel.sendChallenge(challenge.receiver!!, challenge)
         }
     }
