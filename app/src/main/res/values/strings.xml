@@ -20,4 +20,6 @@
     <string name="confirm_choice">Voulez-vous confirmer ce choix?</string>
     <string name="no">NON</string>
     <string name="yes">OUI</string>
+    <string name="email_address">Adresse e-mail</string>
+    <string name="password">Mot de passe</string>
 </resources>
