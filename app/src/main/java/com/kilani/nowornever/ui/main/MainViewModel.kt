@@ -40,6 +40,9 @@ class MainViewModel(private val userRepository: UserRepository, private val chal
         }
     }
 
+    fun stopListeningForUpdates() = userRepository.stopListeningForUpdates()
+
+
     fun updateUserScore(user: FirebaseUser, score: Int) {
         Coroutines.io {
             val updatedUser = currentUser.value as User

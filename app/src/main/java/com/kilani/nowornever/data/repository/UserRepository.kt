@@ -3,11 +3,13 @@ package com.kilani.nowornever.data.repository
 import android.util.Log
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ListenerRegistration
 import com.kilani.nowornever.data.model.User
 import com.kilani.nowornever.data.toModel
 
 class UserRepository {
     private val dbCollection = FirebaseFirestore.getInstance().collection("users")
+    private lateinit var activityListener : ListenerRegistration
 
     private fun addUserToFirebase(user: User, onSuccess: () -> Unit, onFailure: (e: Exception) -> Unit) {
         dbCollection.document(user.name!!)
@@ -35,12 +37,17 @@ class UserRepository {
     }
 
     fun listenForUserUpdates(user: FirebaseUser, onSuccess: (userUpdated: User) -> Unit) {
-        dbCollection.document(user.displayName!!)
+        activityListener = dbCollection.document(user.displayName!!)
             .addSnapshotListener { snapshot, e ->
                 if (e != null) Log.w("UserRepository", "Error listening for updates: ", e)
-                if (snapshot!!.exists()) onSuccess(snapshot.toObject(User::class.java)!!)
+                if (snapshot != null) {
+                    if (snapshot.exists()) onSuccess(snapshot.toObject(User::class.java)!!)
+                }
             }
     }
+
+    fun stopListeningForUpdates() = activityListener.remove()
+
 
     fun updateUserScore(newScore: Int, user: FirebaseUser, onSuccess: () -> Unit) {
         dbCollection.document(user.displayName!!)

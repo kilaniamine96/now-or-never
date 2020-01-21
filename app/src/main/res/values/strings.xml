@@ -22,4 +22,6 @@
     <string name="yes">OUI</string>
     <string name="email_address">Adresse e-mail</string>
     <string name="password">Mot de passe</string>
+    <string name="welcome_title">Bienvenue dans l\'application NowOrNever !   Connecte toi pour commencer à l\'utiliser</string>
+    <string name="connect_google">Se connecter avec Google</string>
 </resources>
