@@ -94,6 +94,7 @@ class SendChallengeDialogFragment : DialogFragment() {
             this.points = pointsEt.text.toString().toInt()
             this.description = descriptionEt.text.toString()
             this.sender = FirebaseAuth.getInstance().currentUser!!.displayName
+            this.senderPictureUrl = FirebaseAuth.getInstance().currentUser!!.photoUrl.toString()
             this.receiver = receiverEt.text.toString()
             this.status = ChallengeStatus.PROPOSED
             this.category = (challengeCategorySpinner.selectedItem as ChallengeCategorySpinnerAdapter.ChallengeCategoryWithHint).challengeCategory

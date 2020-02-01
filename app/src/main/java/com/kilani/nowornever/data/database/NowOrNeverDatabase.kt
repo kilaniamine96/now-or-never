@@ -6,7 +6,7 @@ import com.kilani.nowornever.data.database.daos.UsersDao
 import com.kilani.nowornever.data.database.entities.UserEntity
 
 @Database(
-    version = 1, entities =
+    version = 2, entities =
     [UserEntity::class]
 )
 abstract class NowOrNeverDatabase : RoomDatabase() {

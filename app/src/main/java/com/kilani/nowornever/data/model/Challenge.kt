@@ -8,6 +8,7 @@ data class Challenge (
     var category: ChallengeCategory? = ChallengeCategory.RANDOM,
     var description: String? = "",
     var sender: String? = "",
+    var senderPictureUrl: String? = "",
     var receiver: String? = "",
     var status: ChallengeStatus? = ChallengeStatus.PROPOSED
 )

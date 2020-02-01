@@ -46,7 +46,7 @@ class DoneChallengesFragment : Fragment(), DoneChallengesAdapter.DoneChallengesL
         viewModel.challengesList.value?.let {
             doneChallengesRv.apply {
                 layoutManager = LinearLayoutManager(context)
-                adapter = DoneChallengesAdapter(it.filter { it.status == ChallengeStatus.DONE }, this@DoneChallengesFragment)
+                adapter = DoneChallengesAdapter(this@DoneChallengesFragment, it.filter { it.status == ChallengeStatus.DONE }, this@DoneChallengesFragment)
             }
         }
     }

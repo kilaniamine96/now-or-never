@@ -64,6 +64,8 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_persistence_version"
     kapt "androidx.room:room-compiler:$room_persistence_version"
     testImplementation 'junit:junit:4.12'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutines"

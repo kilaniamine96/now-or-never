@@ -48,7 +48,7 @@ class ReceivedChallengesFragment : Fragment(), ReceivedChallengesAdapter.Receive
         viewModel.challengesList.value?.let {
             receivedChallengesRv.apply {
                 layoutManager = LinearLayoutManager(context)
-                adapter = ReceivedChallengesAdapter(it.filter { it.status == ChallengeStatus.PROPOSED }, this@ReceivedChallengesFragment)
+                adapter = ReceivedChallengesAdapter(this@ReceivedChallengesFragment, it.filter { it.status == ChallengeStatus.PROPOSED }, this@ReceivedChallengesFragment)
             }
         }
     }

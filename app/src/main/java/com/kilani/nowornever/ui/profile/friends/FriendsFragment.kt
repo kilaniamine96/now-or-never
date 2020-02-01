@@ -1,4 +1,4 @@
-package com.kilani.nowornever.ui.profile
+package com.kilani.nowornever.ui.profile.friends
 
 
 import android.os.Bundle
@@ -16,12 +16,12 @@ import org.koin.android.viewmodel.ext.android.sharedViewModel
 /**
  * A simple [Fragment] subclass.
  */
-class ProfileFragment : Fragment() {
+class FriendsFragment : Fragment() {
 
     val viewModel by sharedViewModel<MainViewModel>()
 
     companion object {
-        fun newInstance() = ProfileFragment()
+        fun newInstance() = FriendsFragment()
     }
 
     override fun onCreateView(
@@ -34,8 +34,6 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        profileViewPager.adapter = ProfileFragmentPagerAdapter(childFragmentManager)
-        profileTl.setupWithViewPager(profileViewPager)
     }
 
 
