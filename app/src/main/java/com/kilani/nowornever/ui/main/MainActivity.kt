@@ -26,6 +26,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
          initListeners()
          viewModel.getUser(currentUser)
          viewModel.listenForUserUpdates(currentUser)
+         viewModel.getAllUsers()
      }
 
 

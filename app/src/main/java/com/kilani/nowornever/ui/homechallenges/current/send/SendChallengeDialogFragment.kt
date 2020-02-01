@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -13,7 +14,9 @@ import com.kilani.nowornever.R
 import com.kilani.nowornever.data.enums.ChallengeCategory
 import com.kilani.nowornever.data.enums.ChallengeStatus
 import com.kilani.nowornever.data.model.Challenge
+import com.kilani.nowornever.ui.main.MainViewModel
 import kotlinx.android.synthetic.main.dialog_fragment_send_challenge.*
+import org.koin.android.viewmodel.ext.android.sharedViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
 /**
@@ -26,6 +29,7 @@ class SendChallengeDialogFragment : DialogFragment() {
             SendChallengeDialogFragment()
     }
 
+    private val mainViewModel by sharedViewModel<MainViewModel>()
     private val viewModel by viewModel<SendChallengeViewModel>()
     private var challenge = Challenge()
 
@@ -40,8 +44,20 @@ class SendChallengeDialogFragment : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initListeners()
+        initUsersListAutocompletion()
         initCategorySpinnerAdapter()
         initObservers()
+    }
+
+    private fun initUsersListAutocompletion() {
+        receiverEt.setAdapter(
+            ArrayAdapter<String>(
+                context!!,
+                android.R.layout.simple_dropdown_item_1line,
+                mainViewModel.usersList.value!!.map { user -> user.name!! }.toTypedArray()
+                )
+        )
+        receiverEt.threshold = 1
     }
 
     private fun initObservers() {

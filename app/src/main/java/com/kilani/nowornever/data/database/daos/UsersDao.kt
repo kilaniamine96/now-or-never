@@ -4,14 +4,15 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.kilani.nowornever.data.database.entities.FriendEntity
+import com.kilani.nowornever.data.database.entities.UserEntity
+import com.kilani.nowornever.data.model.User
 
 @Dao
-interface FriendsDao {
+interface UsersDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertList(entities: List<FriendEntity>)
+    fun insertList(entities: List<UserEntity>)
 
-    @Query("SELECT * FROM FriendEntity")
-    fun getAll(): List<FriendEntity>
+    @Query("SELECT * FROM UserEntity")
+    fun getAll(): List<UserEntity>
 }

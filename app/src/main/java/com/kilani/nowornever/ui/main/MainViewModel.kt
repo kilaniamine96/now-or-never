@@ -13,6 +13,7 @@ class MainViewModel(private val userRepository: UserRepository, private val chal
 
     val challengesList = MutableLiveData<MutableList<Challenge>>().apply { value = null }
     val currentUser = MutableLiveData<User>().apply { value = null }
+    val usersList = MutableLiveData<MutableList<User>>().apply { value = null }
 
     fun getUser(user: FirebaseUser) {
         Coroutines.io {
@@ -20,6 +21,14 @@ class MainViewModel(private val userRepository: UserRepository, private val chal
                 remoteUser ->
                 challengesList.postValue(remoteUser.challenges)
                 currentUser.postValue(remoteUser)
+            })
+        }
+    }
+
+    fun getAllUsers() {
+        Coroutines.io {
+            userRepository.getAllUsers( onSuccess =  {
+                userList ->  usersList.postValue(userList)
             })
         }
     }

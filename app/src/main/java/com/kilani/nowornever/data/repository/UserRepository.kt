@@ -4,10 +4,13 @@ import android.util.Log
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
+import com.kilani.nowornever.data.database.daos.UsersDao
 import com.kilani.nowornever.data.model.User
+import com.kilani.nowornever.data.toEntity
 import com.kilani.nowornever.data.toModel
+import com.kilani.nowornever.utils.Coroutines
 
-class UserRepository {
+class UserRepository constructor(private val usersDao: UsersDao){
     private val dbCollection = FirebaseFirestore.getInstance().collection("users")
     private lateinit var activityListener : ListenerRegistration
 
@@ -34,6 +37,21 @@ class UserRepository {
             }
             .addOnFailureListener { exception ->
                 Log.w("UserRepository", "Error getting user: ", exception) }
+    }
+
+    fun getAllUsers(onSuccess: (userList: MutableList<User>) -> Unit) {
+
+        dbCollection.get()
+            .addOnSuccessListener { userList ->
+                val userListToSave = mutableListOf<User>()
+                for (user in userList) {
+                    userListToSave.add(user.toObject(User::class.java))
+                }
+                Coroutines.io{
+                    usersDao.insertList(userListToSave.map { user -> user.toEntity() })
+                }
+                onSuccess(userListToSave)
+            }
     }
 
     fun listenForUserUpdates(user: FirebaseUser, onSuccess: (userUpdated: User) -> Unit) {

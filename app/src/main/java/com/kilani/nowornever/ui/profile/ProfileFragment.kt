@@ -34,7 +34,7 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        helloTv.text = "Hello" + viewModel.currentUser.value?.score
+        helloTv.text = getString(R.string.hello_user_text, FirebaseAuth.getInstance().currentUser?.displayName, viewModel.currentUser.value?.score)
     }
 
 

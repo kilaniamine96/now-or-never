@@ -24,4 +24,5 @@
     <string name="password">Mot de passe</string>
     <string name="welcome_title">Bienvenue dans l\'application NowOrNever !   Connecte toi pour commencer à l\'utiliser</string>
     <string name="connect_google">Se connecter avec Google</string>
+    <string name="hello_user_text">Salut à toi %1$s !! \n Voici ton score %2$d</string>
 </resources>
