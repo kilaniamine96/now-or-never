@@ -6,7 +6,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.kilani.nowornever.data.model.Challenge
 import com.kilani.nowornever.ui.core.BaseViewHolder
-import kotlinx.android.synthetic.main.layout_received_challenges_recyclerview_item.view.*
+import kotlinx.android.synthetic.main.challenge_card.view.*
 
 class DoneChallengesViewHolder(
     private val fragment: Fragment,
@@ -18,6 +18,7 @@ class DoneChallengesViewHolder(
             .load(item.senderPictureUrl)
             .apply(RequestOptions.circleCropTransform())
             .into(view.senderIv)
+        view.validateBtn.visibility = View.GONE
         view.senderTv.text = item.sender
         view.pointsTv.text = "Points du défi: " + item.points.toString()
         view.descriptionTv.text = item.description

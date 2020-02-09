@@ -6,14 +6,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.kilani.nowornever.data.model.Challenge
 import com.kilani.nowornever.ui.core.BaseViewHolder
-import kotlinx.android.synthetic.main.layout_current_challenges_recyclerview_item.view.*
-import kotlinx.android.synthetic.main.layout_current_challenges_recyclerview_item.view.deleteBtn
-import kotlinx.android.synthetic.main.layout_current_challenges_recyclerview_item.view.descriptionTv
-import kotlinx.android.synthetic.main.layout_current_challenges_recyclerview_item.view.pointsTv
-import kotlinx.android.synthetic.main.layout_current_challenges_recyclerview_item.view.senderIv
-import kotlinx.android.synthetic.main.layout_current_challenges_recyclerview_item.view.senderTv
-import kotlinx.android.synthetic.main.layout_current_challenges_recyclerview_item.view.validateBtn
-import kotlinx.android.synthetic.main.layout_received_challenges_recyclerview_item.view.*
+import kotlinx.android.synthetic.main.challenge_card.view.*
 
 class CurrentChallengesViewHolder(
     private val fragment: Fragment,

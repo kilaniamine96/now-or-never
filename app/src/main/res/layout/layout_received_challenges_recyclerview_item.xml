@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rootContainer"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -10,67 +8,7 @@
     android:background="@drawable/rounded_white_background_received"
     android:orientation="horizontal">
 
-    <ImageView
-        android:id="@+id/senderIv"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_width="50dp"
-        android:layout_height="50dp"/>
-
-    <TextView
-        android:id="@+id/senderTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:fontFamily="@font/archivo_black"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toEndOf="@id/senderIv"
-        app:layout_constraintTop_toTopOf="@id/senderIv"
-        tools:text="Farid Kilani" />
-
-    <TextView
-        android:id="@+id/pointsTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="20 points" />
-
-    <TextView
-        android:id="@+id/descriptionTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/senderTv"
-        tools:text="Parler à une fille dans la rue" />
-
-    <ImageButton
-        android:id="@+id/validateBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:backgroundTint="@color/light_grey"
-        android:src="@drawable/ic_validate"
-        android:tint="@color/green"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/descriptionTv" />
-
-    <ImageButton
-        android:id="@+id/deleteBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/light_grey"
-        android:src="@drawable/ic_delete_trash"
-        android:tint="@color/red"
-        app:layout_constraintEnd_toStartOf="@id/validateBtn"
-        app:layout_constraintTop_toTopOf="@id/validateBtn" />
+    <include layout="@layout/challenge_card" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

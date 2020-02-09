@@ -13,6 +13,8 @@ import com.kilani.nowornever.R
 import com.kilani.nowornever.data.enums.ChallengeStatus
 import com.kilani.nowornever.ui.main.MainActivity
 import com.kilani.nowornever.ui.main.MainViewModel
+import kotlinx.android.synthetic.main.challenge_card.*
+import kotlinx.android.synthetic.main.challenge_card.view.*
 import kotlinx.android.synthetic.main.fragment_done_challenges.*
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
