@@ -53,12 +53,11 @@ class MainViewModel(private val userRepository: UserRepository, private val chal
     fun stopListeningForUpdates() = userRepository.stopListeningForUpdates()
 
 
-    fun updateUserScore(user: FirebaseUser, score: Int) {
+    fun updateUserScoreAndLevel(user: FirebaseUser, score: Int) {
         Coroutines.io {
             val updatedUser = currentUser.value as User
             updatedUser.score = updatedUser.score?.plus(score)
-            updatedUser.level = LevelUtil.getLevelFromScore(updatedUser.score!!)
-            userRepository.updateUserScore(updatedUser.score!!, user, onSuccess = { currentUser.postValue(updatedUser)}  )
+            userRepository.updateUserScoreAndLevel(LevelUtil.getLevelFromScore(updatedUser.score!!), updatedUser.score!!, user, onSuccess = { currentUser.postValue(updatedUser)}  )
         }
     }
 }

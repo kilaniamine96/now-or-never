@@ -5,6 +5,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 import com.kilani.nowornever.data.database.daos.UsersDao
+import com.kilani.nowornever.data.enums.Level
 import com.kilani.nowornever.data.model.User
 import com.kilani.nowornever.data.toEntity
 import com.kilani.nowornever.data.toModel
@@ -67,12 +68,18 @@ class UserRepository constructor(private val usersDao: UsersDao){
     fun stopListeningForUpdates() = activityListener.remove()
 
 
-    fun updateUserScore(newScore: Int, user: FirebaseUser, onSuccess: () -> Unit) {
+    fun updateUserScoreAndLevel(newLevel: Level, newScore: Int, user: FirebaseUser, onSuccess: () -> Unit) {
         dbCollection.document(user.displayName!!)
             .update("score", newScore)
             .addOnSuccessListener { onSuccess() }
             .addOnFailureListener{ e ->
                 Log.w("UserRepository", "Could not update User score", e)
+            }
+        dbCollection.document(user.displayName!!)
+            .update("level", newLevel)
+            .addOnSuccessListener { onSuccess() }
+            .addOnFailureListener{ e ->
+                Log.w("UserRepository", "Could not update User level", e)
             }
     }
 }
