@@ -4,6 +4,7 @@ import androidx.annotation.ColorRes
 import androidx.annotation.StringRes
 import com.kilani.nowornever.R
 import com.kilani.nowornever.data.enums.ChallengeCategory
+import com.kilani.nowornever.data.enums.Level
 
 //ChallengeCategory
 @StringRes
@@ -23,5 +24,21 @@ fun ChallengeCategory.colorRes(): Int {
         ChallengeCategory.HOT -> R.color.red
         ChallengeCategory.FUNNY -> R.color.grass
         ChallengeCategory.RANDOM -> R.color.midnight_sun
+    }
+}
+
+//Level
+@StringRes
+fun Level.stringRes(): Int {
+    return when(this) {
+        Level.CANARI -> R.string.canari
+        Level.PIVERT -> R.string.pivert
+        Level.CANARD -> R.string.canard
+        Level.PELICAN -> R.string.pelican
+        Level.GOELAND -> R.string.goeland
+        Level.PAON -> R.string.paon
+        Level.FAUCON -> R.string.faucon
+        Level.AIGLE -> R.string.aigle
+        Level.CONDOR -> R.string.condor
     }
 }

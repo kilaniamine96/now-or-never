@@ -8,6 +8,7 @@ import com.kilani.nowornever.data.model.Challenge
 import com.kilani.nowornever.data.model.User
 import com.kilani.nowornever.data.repository.ChallengeRepository
 import com.kilani.nowornever.utils.Coroutines
+import com.kilani.nowornever.utils.LevelUtil
 
 class MainViewModel(private val userRepository: UserRepository, private val challengeRepository: ChallengeRepository) : ViewModel() {
 
@@ -56,6 +57,7 @@ class MainViewModel(private val userRepository: UserRepository, private val chal
         Coroutines.io {
             val updatedUser = currentUser.value as User
             updatedUser.score = updatedUser.score?.plus(score)
+            updatedUser.level = LevelUtil.getLevelFromScore(updatedUser.score!!)
             userRepository.updateUserScore(updatedUser.score!!, user, onSuccess = { currentUser.postValue(updatedUser)}  )
         }
     }

@@ -2,10 +2,22 @@
     <string name="app_name">NowOrNever</string>
     <string name="home">Accueil</string>
     <string name="profile">Profil</string>
+
     <string name="love">Amour</string>
     <string name="hot">Caliente</string>
     <string name="funny">Rigolo</string>
     <string name="random">Divers</string>
+
+    <string name="canari">CANARI</string>
+    <string name="pivert">PIVERT</string>
+    <string name="canard">CANARD</string>
+    <string name="pelican">PELICAN</string>
+    <string name="goeland">GOELAND</string>
+    <string name="paon">PAON</string>
+    <string name="faucon">FAUCON</string>
+    <string name="aigle">AIGLE</string>
+    <string name="condor">CONDOR</string>
+
 
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -24,5 +36,6 @@
     <string name="password">Mot de passe</string>
     <string name="welcome_title">Bienvenue dans l\'application NowOrNever !   Connecte toi pour commencer à l\'utiliser</string>
     <string name="connect_google">Se connecter avec Google</string>
-    <string name="hello_user_text">Salut à toi %1$s !! \n Voici ton score %2$d</string>
+    <string name="hello_user_text">Salut à toi %1$s !!</string>
+    <string name="user_level_text">Tu as le niveau %1$s</string>
 </resources>
