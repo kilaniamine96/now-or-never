@@ -4,6 +4,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.kilani.nowornever.R
 import com.kilani.nowornever.data.colorRes
 import com.kilani.nowornever.data.model.Challenge
 import com.kilani.nowornever.data.stringRes
@@ -18,6 +19,7 @@ class ReceivedChallengesViewHolder(
     override fun bind(item: Challenge, itemPosition: Int) {
         Glide.with(fragment)
             .load(item.senderPictureUrl)
+            .placeholder(R.drawable.ic_unknown_user_symbol)
             .apply(RequestOptions.circleCropTransform())
             .into(view.senderIv)
         view.senderTv.text = item.sender
