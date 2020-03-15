@@ -2,6 +2,8 @@
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.SparseArray
+import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
@@ -18,6 +20,13 @@ import org.koin.android.viewmodel.ext.android.viewModel
 
      val viewModel by viewModel<MainViewModel>()
      private val currentUser = FirebaseAuth.getInstance().currentUser!!
+
+     private var savedStateSparseArray = SparseArray<Fragment.SavedState>()
+     private var currentSelectItemId = R.id.home
+     companion object {
+         const val SAVED_STATE_CONTAINER_KEY = "ContainerKey"
+         const val SAVED_STATE_CURRENT_TAB_KEY = "CurrentTabKey"
+     }
 
      override fun onCreate(savedInstanceState: Bundle?) {
          super.onCreate(savedInstanceState)
@@ -40,11 +49,11 @@ import org.koin.android.viewmodel.ext.android.viewModel
          bottomNavigationView.setOnNavigationItemSelectedListener { item ->
              when (item.itemId) {
                  R.id.home -> {
-                     replaceContentFragment(HomeChallengesFragment.newInstance())
+                     swapFragments(item.itemId, "Home", HomeChallengesFragment.newInstance())
                      return@setOnNavigationItemSelectedListener true
                  }
                  R.id.profile -> {
-                     replaceContentFragment(ProfileFragment.newInstance())
+                     swapFragments(item.itemId, "Profile", ProfileFragment.newInstance())
                      return@setOnNavigationItemSelectedListener true
                  }
                  else -> {
@@ -84,6 +93,31 @@ import org.koin.android.viewmodel.ext.android.viewModel
      override fun onDestroy() {
          super.onDestroy()
          viewModel.stopListeningForUpdates()
+     }
+
+
+     private fun swapFragments(@IdRes actionId: Int, key: String, fragment: Fragment?) {
+         if (supportFragmentManager.findFragmentByTag(key) == null) {
+             savedFragmentState(actionId)
+             createFragment(key, actionId, fragment)
+         }
+     }
+
+     private fun createFragment(key: String, actionId: Int, fragment: Fragment?) {
+         fragment?.setInitialSavedState(savedStateSparseArray[actionId])
+         supportFragmentManager.beginTransaction()
+             .replace(R.id.fragmentContainer, fragment!!, key)
+             .commit()
+     }
+
+     private fun savedFragmentState(actionId: Int) {
+         val currentFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainer)
+         if (currentFragment != null) {
+             savedStateSparseArray.put(currentSelectItemId,
+                 supportFragmentManager.saveFragmentInstanceState(currentFragment)
+             )
+         }
+         currentSelectItemId = actionId
      }
  }
 
